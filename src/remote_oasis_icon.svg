@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="45px" height="45px" viewBox="0 0 45 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.5" offset="100%"></stop>
+        </linearGradient>
+        <path d="M25.7780754,19.9983387 L25.661918,19.8776515 C24.8275358,19.0107303 23.0474061,18.7386367 21.6858868,19.2699135 C21.3219786,19.4119137 21.0119567,19.6034516 20.7780754,19.830778 L25.7780754,19.9983387 Z" id="path-2"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon">
+            <g>
+                <circle id="oasis" stroke="#E85A4F" fill="#EAE7DC" cx="22.5" cy="22.5" r="22"></circle>
+                <path d="M2,29.8498404 L6.64016872,27.6543206 C10.1147984,26.0102817 14.2006662,26.3321623 17.375,28.5 C20.4656837,30.6107108 24.5343163,30.6107108 27.625,28.5 C30.7993338,26.3321623 34.8852016,26.0102817 38.3598313,27.6543206 L43,29.8498404 L43,29.8498404" id="dunes" stroke="#E85A4F" stroke-linecap="square"></path>
+                <path d="M21,16 L20.8606111,15.8793127 C19.8593526,15.0123915 17.7231968,14.740298 16.0893737,15.2715748 C15.6526838,15.413575 15.2806576,15.6051128 15,15.8324393 L21,16 Z" id="Line-4" stroke="#E85A4F" fill="#E85A4F" stroke-linecap="square"></path>
+                <path d="M24,14 L23.8606111,13.8793127 C22.8593526,13.0123915 20.7231968,12.740298 19.0893737,13.2715748 C18.6526838,13.413575 18.2806576,13.6051128 18,13.8324393 L24,14 Z" id="Line-4-Copy" stroke="#E85A4F" fill="#E85A4F" stroke-linecap="square" transform="translate(21.000000, 13.500000) rotate(73.000000) translate(-21.000000, -13.500000) "></path>
+                <g id="Line-4-Copy" stroke-linecap="square" transform="translate(23.278075, 19.498339) rotate(64.000000) translate(-23.278075, -19.498339) ">
+                    <use fill="#E85A4F" xlink:href="#path-2"></use>
+                    <use stroke="#E85A4F" stroke-width="1" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                </g>
+                <path d="M27,17 L26.8606111,16.8793127 C25.8593526,16.0123915 23.7231968,15.740298 22.0893737,16.2715748 C21.6526838,16.413575 21.2806576,16.6051128 21,16.8324393 L27,17 Z" id="Line-4-Copy" stroke="#E85A4F" fill="#E85A4F" stroke-linecap="square"></path>
+                <path d="M21.5,16.5 L21.4247283,16.5691091 C18.2865082,19.450398 16.2011602,23.2977832 15.5,27.5 L15.5,27.5 L15.5,27.5" id="Line" stroke="#E85A4F" stroke-linecap="square"></path>
+            </g>
+        </g>
+    </g>
+</svg>
