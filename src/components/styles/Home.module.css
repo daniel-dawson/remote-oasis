@@ -1,0 +1,16 @@
+.content {
+  height: 100%;
+  justify-content: "space-around";
+}
+
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
+}
+
+.width {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
