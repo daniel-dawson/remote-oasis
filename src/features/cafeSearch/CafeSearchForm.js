@@ -3,15 +3,20 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-export default function CafeSearchForm() {
-  const [searchTerm, setSearchTerm] = useState("");
+export default function CafeSearchForm({ setCafe, location }) {
+  const [searchTerm, setSearchTerm] = useState(location);
 
   const handleInputChange = e => {
     setSearchTerm(e.target.value);
   };
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    setCafe({ location: searchTerm });
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Form.Group as={Row} controlId="formCafeSearch">
         <Col md={6}>
           <Form.Label>Search by location</Form.Label>
