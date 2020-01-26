@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
-function CafeShowContainer({ showCafesList, cafeId, cafe }) {
+import Cafe from "./Cafe";
+
+function CafeShowContainer({ showCafesList, cafe }) {
   useEffect(() => {
     console.log(cafe);
     // cleanup interval here
@@ -10,6 +12,7 @@ function CafeShowContainer({ showCafesList, cafeId, cafe }) {
   return (
     <div>
       <button onClick={() => showCafesList()}>Go Back</button>
+      <Cafe cafe={cafe} />
     </div>
   );
 }
