@@ -13,12 +13,12 @@ function App() {
       </header>
       <main className={styles.main}>
         <Switch>
-          <Route path="/home"></Route>
-          <Route path="/about"></Route>
-          <Route path="/explore">
+          <Route exact path="/home"></Route>
+          <Route exact path="/about"></Route>
+          <Route path="/explore/cafes">
             <Explore />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Home />
           </Route>
         </Switch>
