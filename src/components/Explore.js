@@ -3,39 +3,32 @@ import CafeSearchForm from "../features/cafeSearch/CafeSearchForm";
 import CafesListContainer from "../features/cafesList/CafesListContainer";
 import CafeShowContainer from "../features/cafeShow/CafeShowContainer";
 import { connect } from "react-redux";
+import { useRouteMatch, Switch, Route } from "react-router-dom";
 
 import {
   setCafe,
   setDisplayType
 } from "../features/displayCafes/cafesDisplaySlice";
 
-function Explore({ setCafe, setDisplayType, displayType, cafeId, location }) {
-  const showCafesList = () => {
-    setDisplayType({ displayType: "index" });
-  };
+function Explore({ setCafe, setDisplayType, cafeId, cafeLocation }) {
+  const match = useRouteMatch();
 
   const showCafe = id => {
     setDisplayType({ displayType: "show", cafeId: id });
   };
 
-  let content;
-  if (displayType === "index") {
-    content = (
-      <>
-        <CafeSearchForm setCafe={setCafe} location={location} />
-        <CafesListContainer showCafe={showCafe} location={location} />
-      </>
-    );
-  } else if (cafeId !== null) {
-    content = (
-      <CafeShowContainer showCafesList={showCafesList} cafeId={cafeId} />
-    );
-  }
-
   return (
     <div>
-      <h1>Explore</h1>
-      {content}
+      <Switch>
+        <Route path={`${match.path}/:cafeId`}>
+          <CafeShowContainer cafeId={cafeId} />
+        </Route>
+        <Route path={match.path}>
+          <h1>Explore</h1>
+          <CafeSearchForm setCafe={setCafe} cafeLocation={cafeLocation} />
+          <CafesListContainer showCafe={showCafe} cafeLocation={cafeLocation} />
+        </Route>
+      </Switch>
     </div>
   );
 }
@@ -46,8 +39,8 @@ const actions = {
 };
 
 const mapStateToProps = state => {
-  const { displayType, cafeId, location } = state.cafesDisplay;
-  return { displayType, cafeId, location };
+  const { displayType, cafeId, cafeLocation } = state.cafesDisplay;
+  return { displayType, cafeId, cafeLocation };
 };
 
 export default connect(mapStateToProps, actions)(Explore);
