@@ -27,7 +27,7 @@ export default function Home() {
               <CtaButton
                 variant="primary"
                 text="Find Your Oasis"
-                route="/explore"
+                route="/explore/cafes"
               />
             </p>
           </Jumbotron>
