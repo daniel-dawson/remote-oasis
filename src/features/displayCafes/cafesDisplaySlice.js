@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   displayType: "index",
   cafeId: null,
-  location: ""
+  cafeLocation: ""
 };
 
 const cafesDisplaySlice = createSlice({
@@ -11,8 +11,8 @@ const cafesDisplaySlice = createSlice({
   initialState,
   reducers: {
     setCafe(state, { payload }) {
-      const { location } = payload;
-      state.location = location;
+      const { cafeLocation } = payload;
+      state.cafeLocation = cafeLocation;
     },
     setDisplayType(state, { payload }) {
       const { displayType, cafeId = null } = payload;
