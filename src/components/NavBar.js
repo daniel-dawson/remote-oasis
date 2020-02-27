@@ -28,8 +28,11 @@ function NavBar() {
             <Nav.Link eventKey="home" as={NavLink} to="/" exact>
               Home
             </Nav.Link>
-            <Nav.Link eventKey="explore" as={NavLink} to="/explore">
+            <Nav.Link eventKey="explore" as={NavLink} to="/explore/cafes">
               Explore
+            </Nav.Link>
+            <Nav.Link eventKey="favorites" as={NavLink} to="/favorites">
+              Favorites
             </Nav.Link>
             <Nav.Link eventKey="about" as={NavLink} to="/about">
               About
