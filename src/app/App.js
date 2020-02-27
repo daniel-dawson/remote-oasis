@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Home from "../components/Home";
 import Explore from "../components/Explore";
+import FavoritesContainer from "../features/favorites/FavoritesContainer";
 import styles from "./App.module.css";
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
           <Route exact path="/about"></Route>
           <Route path="/explore/cafes">
             <Explore />
+          </Route>
+          <Route path="/favorites">
+            <FavoritesContainer />
           </Route>
           <Route exact path="/">
             <Home />
