@@ -1,26 +1,30 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
 
 import Cafe from "./Cafe";
 
-function CafeShowContainer({ showCafesList, cafe }) {
-  useEffect(() => {
-    console.log(cafe);
-    // cleanup interval here
-    return () => {};
-  }, [cafe]);
+function CafeShowContainer({ cafesById }) {
+  let history = useHistory();
+  let { cafeId } = useParams();
+
+  const cafe = cafesById[cafeId];
+
+  const handleClick = e => {
+    e.preventDefault();
+    history.push("/explore/cafes");
+  };
   return (
     <div>
-      <button onClick={() => showCafesList()}>Go Back</button>
+      <button onClick={e => handleClick(e)}>Go Back</button>
       <Cafe cafe={cafe} />
     </div>
   );
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   const { cafesById } = state.cafes;
-  const { cafeId } = ownProps;
-  return { cafe: cafesById[cafeId] };
+  return { cafesById };
 };
 
 export default connect(mapStateToProps)(CafeShowContainer);
