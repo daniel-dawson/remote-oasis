@@ -10,5 +10,5 @@ export const usePreviouslyMountedEffect = (func, deps) => {
     if (isInitialMount.current) isInitialMount.current = false;
     else func();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps);
+  }, [...deps]);
 };
