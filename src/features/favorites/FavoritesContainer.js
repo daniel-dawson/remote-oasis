@@ -3,7 +3,12 @@ import { connect } from "react-redux";
 import { startPolling, stopPolling } from "./favorites";
 import FavoritesList from "./FavoritesList";
 
-function FavoritesContainer({ startPolling, stopPolling, favorites }) {
+function FavoritesContainer({
+  startPolling,
+  stopPolling,
+  favorites,
+  favoritesById
+}) {
   useEffect(() => {
     startPolling();
     return () => {
@@ -12,7 +17,7 @@ function FavoritesContainer({ startPolling, stopPolling, favorites }) {
   }, []);
   return (
     <div>
-      <FavoritesList favorites={favorites} />
+      <FavoritesList favorites={favorites} favoritesById={favoritesById} />
     </div>
   );
 }
@@ -23,8 +28,8 @@ const actions = {
 };
 
 const mapStateToProps = state => {
-  const { favorites } = state.favorites;
-  return { favorites };
+  const { favorites, favoritesById } = state.favorites;
+  return { favorites, favoritesById };
 };
 
 export default connect(mapStateToProps, actions)(FavoritesContainer);
