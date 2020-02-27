@@ -15,7 +15,7 @@ function startFetch(state) {
 
 function failedFetch(state, { payload }) {
   state.isLoading = false;
-  state.error = payload;
+  state.error = payload.error;
 }
 
 const cafesSlice = createSlice({
@@ -26,6 +26,10 @@ const cafesSlice = createSlice({
     getCafesStart: startFetch,
     getCafeSuccess(state, { payload }) {
       const { id } = payload;
+      /* Redux toolkit uses immer to make immutable state changes
+       ** Below, state.isLoading = false; is equivalent to
+       ** { ...state, isLoading: false }
+       */
       state.isLoading = false;
       state.cafesById[id] = payload;
       state.error = null;
@@ -59,12 +63,13 @@ export const {
 export default cafesSlice.reducer;
 
 // Thunk that fetches the list of cafes
-export const fetchCafes = location => async dispatch => {
+export const fetchCafes = cafeLocation => async dispatch => {
   try {
     dispatch(getCafesStart());
-    const cafes = await getCafes(location);
+    const cafes = await getCafes(cafeLocation);
     dispatch(getCafesSuccess(cafes));
   } catch (error) {
-    dispatch(getCafesFailure);
+    console.log("TCL: error", error.message);
+    dispatch(getCafesFailure({ error: error.message }));
   }
 };
