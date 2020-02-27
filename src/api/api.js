@@ -52,7 +52,9 @@ export async function getFavorites() {
 
 export async function postFavorite(data) {
   const url = BASE_URL + "/favorites";
-  const params = { cafe: { ...data, yelp_identifier: data.id } };
+  const params = {
+    cafe: { ...data, yelp_identifier: data.id, location: data.location.city }
+  };
   try {
     const resp = await axios.post(url, params);
     const favorites = resp.data.data;
