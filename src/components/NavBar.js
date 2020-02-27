@@ -20,7 +20,7 @@ function NavBar() {
       >
         <Navbar.Brand as={Link} to="/">
           <Logo className="mr-3" />
-          Navbar
+          Remote Oasis
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
