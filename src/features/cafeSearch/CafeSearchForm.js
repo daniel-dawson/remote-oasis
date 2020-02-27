@@ -3,8 +3,8 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-export default function CafeSearchForm({ setCafe, location }) {
-  const [searchTerm, setSearchTerm] = useState(location);
+export default function CafeSearchForm({ setCafe, cafeLocation }) {
+  const [searchTerm, setSearchTerm] = useState(cafeLocation);
 
   const handleInputChange = e => {
     setSearchTerm(e.target.value);
@@ -12,7 +12,7 @@ export default function CafeSearchForm({ setCafe, location }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setCafe({ location: searchTerm });
+    setCafe({ cafeLocation: searchTerm });
   };
 
   return (
