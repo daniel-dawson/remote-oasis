@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { startPolling, stopPolling } from "../favorites/favorites";
+import { postFavorite } from "../../api/api";
 
 import Cafe from "./Cafe";
 
@@ -9,49 +11,73 @@ import { fetchCafes } from "./cafesSlice";
 function CafesListContainer({
   showCafe,
   fetchCafes,
-  location,
+  cafeLocation,
   isLoading,
   error,
-  cafes
+  cafes,
+  favoritesById,
+  startPolling,
+  stopPolling
 }) {
+  let trimmedCafeLocation = cafeLocation.trim();
+  useEffect(() => {
+    startPolling();
+    return () => {
+      stopPolling();
+    };
+  }, []);
+  // Will not run on first render/mount
   usePreviouslyMountedEffect(() => {
-    if (location.trim().length !== 0) {
-      fetchCafes(location);
+    if (trimmedCafeLocation.length !== 0) {
+      fetchCafes(trimmedCafeLocation);
     }
     // eslint-disable-next-line
-  }, [location]);
+  }, [trimmedCafeLocation]);
+
+  function handleRecommendation(e, data) {
+    e.preventDefault();
+    postFavorite(data);
+  }
 
   let content;
 
+  // TODO Separate these into functions
   if (isLoading === true) {
     content = <div>Loading...</div>;
   } else if (error !== null) {
-    content = <div>Error. Try again.</div>;
-  } else if (cafes.length === 0 || location.trim().length === 0) {
+    content = <div>{error}</div>;
+  } else if (cafes.length === 0 || cafeLocation.trim().length === 0) {
     content = <div>Enter a location to get started</div>;
   } else {
     // TODO Replace with CafeList component
-    content = cafes.map(cafe => (
-      <Cafe key={cafe.id} showCafe={showCafe} cafe={cafe} />
-    ));
+    content = (
+      <>
+        {cafes.map(cafe => (
+          <Cafe
+            key={cafe.id}
+            showCafe={showCafe}
+            cafe={cafe}
+            favoritesById={favoritesById}
+            recommendCafe={handleRecommendation}
+          />
+        ))}
+      </>
+    );
   }
 
   return <div>{content}</div>;
 }
 
 const actions = {
-  fetchCafes
+  fetchCafes,
+  startPolling,
+  stopPolling
 };
 
 const mapStateToProps = state => {
-  // console.log("TCL: state", state.cafes);
-
   const { isLoading, error, cafes } = state.cafes;
-  return { isLoading, error, cafes };
-  // return {};
+  const { favoritesById } = state.favorites;
+  return { isLoading, error, cafes, favoritesById };
 };
 
-export default connect(
-  mapStateToProps,
-  actions
-)(React.memo(CafesListContainer));
+export default connect(mapStateToProps, actions)(CafesListContainer);
